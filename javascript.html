@@ -7,9 +7,9 @@
     <title>Select</title>
     <script>
         document.addEventListener("DOMContentLoaded",function(){
-            {document.querySelectorAll("button").forEach(function(button){
-                button.onclick=function(){
-                    document.querySelector("h1").style.color=button.value.color;
+            document.querySelectorAll("select").forEach(function(Select){
+                Select.onclick=function(){
+                    document.querySelector("h1").style.color=Select.style.color;
                 };
             });
          });
