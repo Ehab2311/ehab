@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+        const newTask = document.querySelector("#task");
+        const submit = document.querySelector("#submit");
+        submit.disabled = true;
+        newTask.onkeyup = () => {
+          if (newTask.value.length > 0) {
+            submit.disabled = false;
+          } else {
+            submit.disabled = true;
+          }
+        };
+
+        document.querySelector("#formTask").onsubmit = () => {
+          const task = newTask.value;
+          newTask.value = "";
+          let li = document.createElement("li");
+          li.innerHTML = task;
+          let ul = document.querySelector("#tasks");
+          ul.append(li);
+          submit.disabled = true;
+          return false;
+        };
+      
+    </script>
+  </head>
+<body>
+    <h1>TODO List</h1>
+    <ul id="tasks"></ul>
+    <form id="formTask">
+      <input type="text" id="task" placeholder="Add Task" />
+      <input type="submit" value="Add Task" id="submit" />
+    
+</body>
+</html>
