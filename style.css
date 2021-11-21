@@ -1,4 +1,13 @@
 body {
-    text-align: center;
-    color: red;
+  text-align: center;
+  color: red;
+}
+ul li {
+  padding: 30px;
+  font-size: 50 px;
+  font-style: italic;
+  font-weight: bold;
+}
+body {
+  background-color: aquamarine;
 }
