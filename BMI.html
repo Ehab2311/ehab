@@ -4,27 +4,48 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BMI</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", () => {
         document.querySelector("form").onsubmit = function () {
-          const height = document.querySelector("#height").value;
-          const weight = document.querySelector("#weight").value;
-          var convertCentemeters = height * 100;
-          console.log(convertCentemeters);
-          let bmi = weight / (convertCentemeters * convertCentemeters);
-          console.log(bmi);
+          let form = document.querySelector("form");
+
+          let height = document.querySelector("#height").value;
+
+          let weight = document.querySelector("#weight").value;
+
+          let compute = weight / ((height / 100) * (height / 100));
+
+          document.querySelector("h1").innerHTML = compute.toFixed(2);
+
+          if (compute <= 18.5) {
+            document.querySelector("h2").innerHTML = "Underweight";
+          } else if (compute > 18.5 && compute < 24.9) {
+            document.querySelector("h2").innerHTML = "Normal weight";
+          } else if (compute >= 25 && compute < 29.9) {
+            document.querySelector("h2").innerHTML = "Overweight";
+          } else {
+            document.querySelector("h2").innerHTML = "Obesity";
+          }
           return false;
         };
       });
     </script>
   </head>
+
   <body>
-    <h1 id="result">normal</h1>
-    <form>
-      <input type="number" id="height" placeholder="height in cm" />
-      <input type="number" id="weight" placeholder="weight in kg" />
-      <input type="submit" value="calc" />
-    </form>
+    <div class="container">
+      <form>
+        <label>Your Height in cm :</label>
+        <input type="text" id="height" /><br /><br />
+        <label>Your Weight in Kg :</label>
+        <input type="text" id="weight" /><br /><br />
+        <input type="submit" id="compute" value=" BMI" /><br />
+        <h1></h1>
+        <h2></h2>
+      </form>
+      <div id="image"></div>
+    </div>
   </body>
 </html>
